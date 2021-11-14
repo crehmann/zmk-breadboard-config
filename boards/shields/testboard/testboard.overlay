@@ -15,13 +15,13 @@
         diode-direction = "col2row";
 
         col-gpios
-            = <&pro_micro 2 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 4 GPIO_ACTIVE_HIGH>
+            = <&pro_micro 15 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 14 GPIO_ACTIVE_HIGH>
             ;
 
         row-gpios
-            = <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
         
@@ -30,20 +30,19 @@
 &spi0 {
     status = "okay";
     compatible = "nordic,nrf-spim";
-    sck-pin = <2>;
-    miso-pin = <3>;
-    mosi-pin = <28>;
-    cs-gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
+    sck-pin = <13>;
+    miso-pin = <22>;
+    mosi-pin = <6>;
+    cs-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>;
 
 	ls0xx@0 {
 		compatible = "sharp,ls0xx";
 		label = "DISPLAY";
 		spi-max-frequency = <2000000>;
 		reg = <0>;
-		width = <144>;
-		height = <168>;
-		extcomin-gpios = <&gpio0 29 GPIO_ACTIVE_HIGH>;
-		extcomin-frequency = <60>; /* required if extcomin-gpios is defined */
-		//disp-en-gpios = <&gpio0 31 GPIO_ACTIVE_HIGH>; 
+		width = <160>;
+		height = <68>;
+		extcomin-gpios = <&pro_micro 2 GPIO_ACTIVE_HIGH>;
+		extcomin-frequency = <60>;
 	};
 };
